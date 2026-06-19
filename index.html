@@ -227,7 +227,103 @@
             50% { transform: translateY(-10px); }
         }
 
-      
+        /* CORREÇÃO/ESTILIZAÇÃO DO SLIDER DE FOTOS */
+        .slider-section {
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 800px; /* Largura máxima ideal da janela */
+            width: 100%;      /* Tamanho automático na tela */
+            height: auto;
+            aspect-ratio: 16 / 9; /* Mantém a proporção de tela de cinema automaticamente */
+            border: 3px solid var(--oxum-gold);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz as fotos preencherem o espaço sem distorcer */
+        }
+
+        /* Botões Próximo e Anterior */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: var(--oxum-gold);
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            z-index: 10;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(255, 215, 0, 0.8);
+            color: var(--exu-black);
+        }
+
+        /* Bolinhas indicadoras (Dots) */
+        .dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: var(--oxum-gold);
+            box-shadow: 0 0 8px var(--oxum-gold);
+        }
         
         /* Cards de Tradições */
         .traditions-section {
@@ -411,6 +507,9 @@
             z-index: 10;
             padding: 80px 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .service-highlight {
@@ -426,11 +525,6 @@
         .service-highlight:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px rgba(255,215,0,0.3);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
         }
 
         .service-text {
@@ -530,6 +624,7 @@
             .photo-wrapper { width: 260px; height: 330px; }
             .cards-container { grid-template-columns: 1fr; }
             .luxury-card { height: 350px; }
+            .slider-container { aspect-ratio: 4 / 3; } /* Proporção mais quadrada para celulares */
         }
 
         /* Efeito de folhas caindo */
@@ -586,40 +681,40 @@
         <div class="experience-badge">✨ 54 Anos de Tradição ✨</div>
     </section>
 
-<!-- SLIDER DE FOTOS -->
-<section class="slider-section">
-    <div class="slider-container">
+    <!-- SLIDER DE FOTOS CORRIGIDO -->
+    <section class="slider-section">
+        <div class="slider-container">
 
-        <div class="slide active">
-            <img src="assets/galeria1.jpeg" alt="Galeria 1">
+            <div class="slide active">
+                <img src="assets/galeria1.jpeg" alt="Galeria 1">
+            </div>
+
+            <div class="slide">
+                <img src="assets/galeria2.jpg" alt="Galeria 2">
+            </div>
+
+            <div class="slide">
+                <img src="assets/galeria3.jpeg" alt="Galeria 3">
+            </div>
+
+            <div class="slide">
+                <img src="assets/galeria4.jpeg" alt="Galeria 4">
+            </div>
+
+            <!-- botões -->
+            <button class="prev" onclick="changeSlide(-1)">❮</button>
+            <button class="next" onclick="changeSlide(1)">❯</button>
+
+            <!-- bolinhas -->
+            <div class="dots">
+                <span class="dot active" onclick="setSlide(0)"></span>
+                <span class="dot" onclick="setSlide(1)"></span>
+                <span class="dot" onclick="setSlide(2)"></span>
+                <span class="dot" onclick="setSlide(3)"></span>
+            </div>
+
         </div>
-
-        <div class="slide">
-            <img src="assets/galeria2.jpg" alt="Galeria 2">
-        </div>
-
-        <div class="slide">
-            <img src="assets/galeria3.jpeg" alt="Galeria 3">
-        </div>
-
-        <div class="slide">
-            <img src="assets/galeria4.jpeg" alt="Galeria 4">
-        </div>
-
-        <!-- botões -->
-        <button class="prev" onclick="changeSlide(-1)">❮</button>
-        <button class="next" onclick="changeSlide(1)">❯</button>
-
-        <!-- bolinhas -->
-        <div class="dots">
-            <span class="dot active" onclick="setSlide(0)"></span>
-            <span class="dot" onclick="setSlide(1)"></span>
-            <span class="dot" onclick="setSlide(2)"></span>
-            <span class="dot" onclick="setSlide(3)"></span>
-        </div>
-
-    </div>
-</section>
+    </section>
     
     <!-- Tradições -->
     <section class="traditions-section">
@@ -698,7 +793,7 @@
                 <div class="line-entity">Oxossi</div>
                 <div class="line-type">Umbanda</div>
                 <p style="margin-top: 15px; opacity: 0.8;">
-                    O caçador verde das matas, justiça, proteção e direcionamento. Dono do Reino.
+                    O caçador verde das matas, justiça, protection e direcionamento. Dono do Reino.
                 </p>
             </div>
         </div>
@@ -711,15 +806,13 @@
             <div class="photo-wrapper">
                 <img src="assets/foto2.png" alt="Jogo de Buzios">
             </div>
-           
         </div>
-            <div class="service-text">Consulta Espiritual</div>
-            <p style="margin-top: 15px; max-width: 400px; center: 1.6;">
-                Através dos Ifás sagradas, receba a orientação dos Orixás e entidades. 
-                Descubra seu caminho, resolva seus problemas e encontre a paz espiritual 
-                que você busca.
-            </p>
-        </div>
+        <div class="service-text">Consulta Espiritual</div>
+        <p style="margin-top: 15px; max-width: 400px; text-align: center; line-height: 1.6;">
+            Através dos Ifás sagrados, receba a orientação dos Orixás e entidades. 
+            Descubra seu caminho, resolva seus problemas e encontre a paz espiritual 
+            que você busca.
+        </p>
     </section>
 
     <!-- Contato WhatsApp -->
@@ -806,38 +899,51 @@
             observer.observe(el);
         });
 
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
+        // JAVASCRIPT DO SLIDER
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
 
-function showSlide(index){
-    slides.forEach((s, i) => {
-        s.classList.remove('active');
-        dots[i].classList.remove('active');
-    });
+        function showSlide(index){
+            slides.forEach((s, i) => {
+                s.classList.remove('active');
+                if(dots[i]) dots[i].classList.remove('active');
+            });
 
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-}
+            slides[index].classList.add('active');
+            if(dots[index]) dots[index].classList.add('active');
+        }
 
-function changeSlide(dir){
-    currentSlide += dir;
+        function changeSlide(dir){
+            currentSlide += dir;
 
-    if(currentSlide >= slides.length) currentSlide = 0;
-    if(currentSlide < 0) currentSlide = slides.length - 1;
+            if(currentSlide >= slides.length) currentSlide = 0;
+            if(currentSlide < 0) currentSlide = slides.length - 1;
 
-    showSlide(currentSlide);
-}
+            showSlide(currentSlide);
+            resetTimer(); // Reinicia o tempo para não pular rápido se o usuário clicar manual
+        }
 
-function setSlide(index){
-    currentSlide = index;
-    showSlide(currentSlide);
-}
+        function setSlide(index){
+            currentSlide = index;
+            showSlide(currentSlide);
+            resetTimer();
+        }
 
-/* auto slide */
-setInterval(() => {
-    changeSlide(1);
-}, 3000);
+        function startTimer() {
+            slideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 3000); // Troca automática a cada 3 segundos
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        // Inicializa o slider
+        startTimer();
         
     </script>
 
