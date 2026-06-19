@@ -227,6 +227,44 @@
             50% { transform: translateY(-10px); }
         }
 
+        <!-- SLIDER DE FOTOS -->
+<section class="slider-section">
+    <div class="slider-container">
+
+        <div class="slide active">
+            <img src="assets/foto1.jpeg" alt="Foto 1">
+        </div>
+
+        <div class="slide">
+            <img src="assets/foto2.png" alt="Foto 2">
+        </div>
+
+         <div class="slide">
+            <img src="assets/foto2.png" alt="Foto 3">
+        </div>
+
+         <div class="slide">
+            <img src="assets/foto2.png" alt="Foto 4">
+        </div>
+        
+        
+        <!-- adicione mais fotos aqui se quiser -->
+
+        <!-- botões -->
+        <button class="prev" onclick="changeSlide(-1)">❮</button>
+        <button class="next" onclick="changeSlide(1)">❯</button>
+
+        <!-- bolinhas -->
+        <div class="dots">
+            <span class="dot active" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+        </div>
+
+    </div>
+</section>
+
+
+        
         /* Cards de Tradições */
         .traditions-section {
             position: relative;
