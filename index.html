@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pai Beto de Oxossi | Reino de Oxossi - Médium Espiritual</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -643,6 +646,31 @@
                 transform: translateY(100vh) rotate(360deg);
             }
         }
+
+/* Ícone WhatsApp Premium */
+.whatsapp-icon{
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-button i{
+    animation: iconPulse 1.5s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+@keyframes iconPulse{
+    0%,100%{
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.18);
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -816,15 +844,22 @@
     </section>
 
     <!-- Contato WhatsApp -->
-    <section class="contact-section">
-        <h3 class="section-title">Entre em Contato</h3>
-        <p style="margin-bottom: 30px; font-size: 1.2rem; opacity: 0.9;">
-            Agende sua consulta espiritual. Atendimento presencial e à distância.
-        </p>
-        <a href="https://wa.me/5551999770359" class="whatsapp-button" target="_blank">
-            <span style="font-size: 2rem;">📱</span>
-            <span>Fale Conosco pelo WhatsApp</span>
-        </a>
+    <<section class="contact-section">
+    <h3 class="section-title">Entre em Contato</h3>
+
+    <p style="margin-bottom: 30px; font-size: 1.2rem; opacity: 0.9;">
+        Agende sua consulta espiritual. Atendimento presencial e à distância.
+    </p>
+
+    <a href="https://wa.me/5551999770359" class="whatsapp-button" target="_blank">
+
+        <span class="whatsapp-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+        </span>
+
+        <span>Marque a sua consulta</span>
+
+    </a>
         <p style="margin-top: 30px; font-style: italic; opacity: 0.7;">
             "Quem busca, encontra. Quem bate, a porta se abre."
         </p>
