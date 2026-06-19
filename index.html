@@ -227,43 +227,7 @@
             50% { transform: translateY(-10px); }
         }
 
-        <!-- SLIDER DE FOTOS -->
-<section class="slider-section">
-    <div class="slider-container">
-
-        <div class="slide active">
-            <img src="assets/foto1.jpeg" alt="Foto 1">
-        </div>
-
-        <div class="slide">
-            <img src="assets/foto2.png" alt="Foto 2">
-        </div>
-
-         <div class="slide">
-            <img src="assets/foto2.png" alt="Foto 3">
-        </div>
-
-         <div class="slide">
-            <img src="assets/foto2.png" alt="Foto 4">
-        </div>
-        
-        
-        <!-- adicione mais fotos aqui se quiser -->
-
-        <!-- botões -->
-        <button class="prev" onclick="changeSlide(-1)">❮</button>
-        <button class="next" onclick="changeSlide(1)">❯</button>
-
-        <!-- bolinhas -->
-        <div class="dots">
-            <span class="dot active" onclick="setSlide(0)"></span>
-            <span class="dot" onclick="setSlide(1)"></span>
-        </div>
-
-    </div>
-</section>
-
-
+      
         
         /* Cards de Tradições */
         .traditions-section {
@@ -622,6 +586,41 @@
         <div class="experience-badge">✨ 54 Anos de Tradição ✨</div>
     </section>
 
+<!-- SLIDER DE FOTOS -->
+<section class="slider-section">
+    <div class="slider-container">
+
+        <div class="slide active">
+            <img src="assets/foto1.jpeg" alt="Foto 1">
+        </div>
+
+        <div class="slide">
+            <img src="assets/foto2.png" alt="Foto 2">
+        </div>
+
+        <div class="slide">
+            <img src="assets/foto3.jpeg" alt="Foto 3">
+        </div>
+
+        <div class="slide">
+            <img src="assets/foto4.jpeg" alt="Foto 4">
+        </div>
+
+        <!-- botões -->
+        <button class="prev" onclick="changeSlide(-1)">❮</button>
+        <button class="next" onclick="changeSlide(1)">❯</button>
+
+        <!-- bolinhas -->
+        <div class="dots">
+            <span class="dot active" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+            <span class="dot" onclick="setSlide(2)"></span>
+            <span class="dot" onclick="setSlide(3)"></span>
+        </div>
+
+    </div>
+</section>
+    
     <!-- Tradições -->
     <section class="traditions-section">
         <h3 class="section-title">Tradições Espirituais</h3>
@@ -806,6 +805,40 @@
             el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(el);
         });
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index){
+    slides.forEach((s, i) => {
+        s.classList.remove('active');
+        dots[i].classList.remove('active');
+    });
+
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+}
+
+function changeSlide(dir){
+    currentSlide += dir;
+
+    if(currentSlide >= slides.length) currentSlide = 0;
+    if(currentSlide < 0) currentSlide = slides.length - 1;
+
+    showSlide(currentSlide);
+}
+
+function setSlide(index){
+    currentSlide = index;
+    showSlide(currentSlide);
+}
+
+/* auto slide */
+setInterval(() => {
+    changeSlide(1);
+}, 3000);
+        
     </script>
 
 </body>
